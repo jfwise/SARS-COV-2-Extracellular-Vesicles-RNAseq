@@ -78,8 +78,8 @@ generate_volcano_plot <- function(dds, res_padj, Type, comparison_variable) {
   res_volcano <- results(dds, alpha = 0.05)
   
   # Determine cutoffs for volcano plot
-  volcano_pval_cutoff <- max(res_volcano$pvalue, na.rm = TRUE)
-  volcano_abs_lfc_cutoff <- min(abs(res_volcano$log2FoldChange), na.rm = TRUE)
+  volcano_pval_cutoff <- volcano_pval_cutoff <- max(resSig@listData[["pvalue"]])
+  volcano_abs_lfc_cutoff <- min(abs(resSig@listData[["log2FoldChange"]]))
   
   # Define custom key-value pairs for coloring
   keyvals <- ifelse(
